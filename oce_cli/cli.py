@@ -35,6 +35,8 @@ COMMANDS: Dict[str, str] = {
     "station": "runtime.station_cli",
     "enforce-station": "runtime.enforce_station",
     "backfill-allowed-actions": "runtime.backfill_allowed_actions",
+    # Web API
+    "serve": "web.serve",
 }
 
 
