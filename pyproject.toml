@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "oce-osce-sim"
+version = "0.1.0"
+description = "Ontario OCE OSCE simulator (DB schema + importer/exporter + examiner tooling)"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+  "psycopg[binary]==3.2.10",
+  "pydantic==2.11.4",
+  "pypdf==5.4.0",
+]
+
+[project.scripts]
+oce = "oce_cli.cli:main"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["importer*", "exporter*", "examiner*", "runtime*", "scoring*", "db*", "oce_cli*"]
+

@@ -19,7 +19,8 @@ export DATABASE_URL="postgresql://postgres:postgres@localhost:5432/oce_sim"
 
 ```bash
 python3 -m pip install -r requirements.txt
-python3 db/apply_migrations.py
+# Prefer running modules so imports resolve consistently:
+python3 -m db.apply_migrations
 ```
 
 ### Import documents
@@ -28,5 +29,29 @@ python3 db/apply_migrations.py
 python3 -m importer.import_sources \
   --source "/path/to/Domains PPT.pdf" \
   --kind pdf
+```
+
+### Export everything to JSON files
+
+This exports:
+- full extracted text (`source_chunks`) per document
+- ingestions + extractions (including warnings)
+- rubrics (sets/domains/criteria)
+- cases/prompts/expected elements
+
+```bash
+python3 -m exporter.export_to_json --out exports
+```
+
+### Optional: install as a CLI
+
+If you want an `oce` command (instead of `python -m ...`), create a virtualenv and install editable:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install -U pip
+python3 -m pip install -e .
+oce --help
 ```
 

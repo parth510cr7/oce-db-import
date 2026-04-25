@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.pyc
+
+# Local exports/artifacts
+exports/
+exports_cli_test/
+
+# Packaging artifacts
+*.egg-info/
+dist/
+build/
+
+.DS_Store
